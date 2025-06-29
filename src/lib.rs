@@ -4,7 +4,7 @@ pub fn decode_hex(hex_str: &str) -> Result<Vec<u8>, String> {
     // TODO: Decode hex string into Vec<u8>, return error string on failure
     match hex_to_bytes(hex_str) {
         Ok(result) => Ok(result),
-        Err(_) => Err("Invalid Hexadecimal value".to_string())
+        Err(_) => Err("Invalid Hexadecimal value".to_string()),
     }
 }
 
@@ -32,7 +32,7 @@ pub fn parse_satoshis(input: &str) -> Result<u64, String> {
     // TODO: Parse input string to u64, return error string if invalid
     match input.parse::<u64>() {
         Ok(result) => Ok(result),
-        Err(_) => Err("Invalid satoshi amount".to_string())
+        Err(_) => Err("Invalid satoshi amount".to_string()),
     }
 }
 
@@ -47,7 +47,7 @@ pub fn classify_script(script: &[u8]) -> ScriptType {
     match script {
         &[0x76, 0xa9, 0x14] => ScriptType::P2PKH,
         &[0x00, 0x14, 0xff] => ScriptType::P2WPKH,
-        _ => ScriptType::Unknown
+        _ => ScriptType::Unknown,
     }
 }
 
@@ -99,7 +99,7 @@ impl Opcode {
             0xac => Ok(Opcode::OpChecksig),
             0x76 => Ok(Opcode::OpDup),
             0x00 => Err("Invalid opcode: 0x00".to_string()),
-            _ => Ok(Opcode::OpInvalid)
+            _ => Ok(Opcode::OpInvalid),
         }
     }
 }
@@ -115,5 +115,4 @@ pub struct UTXO {
 pub fn consume_utxo(utxo: UTXO) -> UTXO {
     // TODO: Implement UTXO consumption logic (if any)
     utxo
-
 }
